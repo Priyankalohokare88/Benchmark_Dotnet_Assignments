@@ -1,0 +1,58 @@
+﻿
+@{
+    string result;
+    if(ViewBag.SudentMark>=35)
+    {
+        result = "pass";
+    }
+    else
+    {
+        result = "fail";
+    }
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentMarks</title>
+</head>
+<body>
+    <div> 
+        <table border="1">
+            <tr>
+                <td>Student Id</td>
+                <td>@ViewBag.StudentId</td>
+            </tr>
+            <tr>
+                <td>Student Name</td>
+                <td>@ViewBag.StudentName</td>
+            </tr>
+            <tr>
+                <td>Student Class</td>
+                <td>@ViewBag.StudentClass</td>
+            </tr>
+            <tr>
+                <td>Student Mark</td>
+                <td>@ViewBag.StudentMark</td>
+            </tr>
+            <tr>
+                <td>Student Result</td>
+                <td>@result</td>
+            </tr>
+            <tr>
+                <td>Student Subjects</td>
+                @foreach(var sub in ViewBag.Subject)
+            {
+                    
+                       <td colspan=>@sub</td>
+                       
+            }
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html>

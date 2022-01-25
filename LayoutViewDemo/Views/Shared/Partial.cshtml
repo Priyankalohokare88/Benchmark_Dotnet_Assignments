@@ -1,0 +1,17 @@
+﻿<div>
+    <table>
+       
+
+        <tr>@ViewBag.Listtitle</tr>
+            
+        
+        @{ 
+            foreach(var d in ViewBag.list)
+            {
+                <tr>@d</tr>
+            }
+        }
+            
+        
+    </table>
+</div>

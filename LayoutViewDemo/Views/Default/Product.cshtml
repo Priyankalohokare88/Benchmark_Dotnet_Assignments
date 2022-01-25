@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/LayoutView2.cshtml";
+
+}
+
+@{ 
+    ViewBag.listtitle = "Product";
+    ViewBag.list = new List<string>() { "Mobile", "TV", "washing machine" };
+    Html.RenderPartial("Partial");
+
+}
+
+<h2>Product View Content Here</h2>
+@{
+    ViewBag.Message = "Hello This is Product view";
+}
+

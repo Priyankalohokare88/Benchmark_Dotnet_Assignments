@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <div>
+
+        <nav class="navbar navbar-expand-sm bg-warning navbar-light">
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Company</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Default/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Default/Product">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Default/Contact">Contact Us</a>
+                </li>
+                </ul>
+                <div class="col-4 text-black-50">
+                    @ViewBag.message
+                </div>
+           
+        </nav>
+    </div>
+    
+
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-2 text-black-50 " style="background-color:aqua;min-height:105px;padding:0px;">
+        <div class="list-group">
+            <a href="#" class="list-group-item" style="background-color:aqua">Favourite</a>
+            <a href="#" class="list-group-item" style="background-color:aqua">Order Now</a>
+            <a href="#" class="list-group-item" style="background-color:aqua">Products</a>
+            @RenderSection("sidebar", required:false)
+            
+        </div>
+    </div>
+    <div class="col-10" style="min-height:630px">
+        @RenderBody()
+    </div>
+</div>
+</div>
+</body>
+</html>

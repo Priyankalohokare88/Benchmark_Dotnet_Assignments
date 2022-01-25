@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6fb50f36-4bdb-46ed-85d8-d1a01cdf4345": {
+      "ProjectGuid": "6fb50f36-4bdb-46ed-85d8-d1a01cdf4345",
+      "DisplayName": "SharedViewDemo",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

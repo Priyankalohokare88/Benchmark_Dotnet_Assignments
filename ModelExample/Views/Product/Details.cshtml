@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td>ProductId</td>
+            <td>ProductName</td>
+            <td>ProductPrice</td>
+        </tr>
+        @{
+           
+                <tr>
+                    <td>@ViewBag.product.Id</td>
+                    <td>@ViewBag.product.Name</td>
+                    <td>@ViewBag.product.Price</td>
+                </tr>
+
+            
+        }
+    </thead>
+</table>
+

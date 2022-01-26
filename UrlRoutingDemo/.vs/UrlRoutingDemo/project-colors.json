@@ -1,5 +1,11 @@
 {
   "Version": 1,
-  "ProjectMap": {},
-  "NextColorIndex": 0
+  "ProjectMap": {
+    "a5cab0b2-dd92-4053-835a-bcda77a37b34": {
+      "ProjectGuid": "a5cab0b2-dd92-4053-835a-bcda77a37b34",
+      "DisplayName": "UrlRoutingDemo",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
 }

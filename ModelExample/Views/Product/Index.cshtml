@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td>ProductId</td>
+            <td>ProductName</td>
+            <td>ProductPrice</td>
+        </tr>
+        @{ 
+            foreach(var item in ViewBag.prod)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td><a href="/Product/Details/@item.Id">@item.Name</a></td>
+                    <td>@item.Price</td>
+                </tr>
+                
+            }
+        }
+    </thead>
+</table>
+

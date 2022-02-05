@@ -1,0 +1,27 @@
+﻿@model Project2.Models.Department
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+<table class="table">
+    <tr>
+        <td>Department Id</td>
+        <td>@Model.Depid</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>@Model.Depname</td>
+    </tr>
+    <tr>
+        <td>Location</td>
+        <td>@Model.DepLocation</td>
+    </tr>
+   
+
+</table>
+
+<a class="btn btn-outline-warning fa fa-backward" style="background-color: #FFC300;color:black " href="\Department\Index"> Back</a>
+

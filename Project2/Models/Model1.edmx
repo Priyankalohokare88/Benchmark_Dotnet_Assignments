@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmpDep1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Depid" />
+          </Key>
+          <Property Name="Depid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Depname" Type="varchar" MaxLength="30" />
+          <Property Name="DepLocation" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empname" Type="varchar" MaxLength="30" />
+          <Property Name="Designation" Type="varchar" MaxLength="40" />
+          <Property Name="Mgid" Type="int" />
+          <Property Name="Emailid" Type="varchar" MaxLength="50" />
+          <Property Name="Hire_date" Type="date" />
+          <Property Name="sal" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Depid" Type="int" />
+        </EntityType>
+        <Association Name="FK__employee__Depid__286302EC">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Depid" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="Depid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpDep1ModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__employee__Depid__286302EC" Association="Self.FK__employee__Depid__286302EC">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmpDep1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Depid" />
+          </Key>
+          <Property Name="Depid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Depname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DepLocation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employee__Depid__286302EC" FromRole="Department" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Mgid" Type="Int32" />
+          <Property Name="Emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hire_date" Type="DateTime" Precision="0" />
+          <Property Name="sal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Depid" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__employee__Depid__286302EC" FromRole="employee" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK__employee__Depid__286302EC">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Depid" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="Depid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmpDep1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <AssociationSet Name="FK__employee__Depid__286302EC" Association="Self.FK__employee__Depid__286302EC">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmpDep1ModelStoreContainer" CdmEntityContainer="EmpDep1Entities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="EmpDep1Model.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Depid" ColumnName="Depid" />
+                <ScalarProperty Name="Depname" ColumnName="Depname" />
+                <ScalarProperty Name="DepLocation" ColumnName="DepLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="EmpDep1Model.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="Empname" ColumnName="Empname" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Mgid" ColumnName="Mgid" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="Hire_date" ColumnName="Hire_date" />
+                <ScalarProperty Name="sal" ColumnName="sal" />
+                <ScalarProperty Name="Depid" ColumnName="Depid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

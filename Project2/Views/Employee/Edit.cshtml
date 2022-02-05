@@ -1,0 +1,67 @@
+﻿@model Project2.Models.employee
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form action="/Employee/Edit/@Model.Empid" method="post">
+    <div class="form-group">
+        <label>Employee Id</label>
+        <input type="text" class="form-control" id="Empid" name="Empid" value="@Model.Empid" readonly>
+    </div>
+    <div class="form-group">
+        <label>Employee Name</label>
+        <input type="text" class="form-control" id="Empname" name="Empname" value="@Model.Empname">
+    </div>
+
+    <div class="form-group">
+        <label>Enter Employee Designation</label>
+        <input type="text" class="form-control" id="Designation" name="Designation" value="@Model.Designation">
+    </div>
+    <div class="form-group">
+        <label>Enter Manager Id</label>
+        <input type="text" class="form-control" id="Mgid" name="Mgid" value="@Model.Mgid">
+    </div>
+    <div class="form-group">
+        <label>Enter Email Id</label>
+        <input type="text" class="form-control" id="Emailid" name="Emailid" value="@Model.Emailid">
+    </div>
+    <div class="form-group">
+        <label>Hire Date</label>
+        <input type="date" class="form-control" id="Hire_date" name="Hire_date" value="@Model.Hire_date.Value.ToString("yyyy-MM-dd")">
+    </div>
+    <div class="form-group">
+        <label>Enter Salry</label>
+        <input type="text" class="form-control" id="sal" name="sal" value="@Model.sal">
+    </div>
+    <div class="form-group">
+        <label>Department Name</label>
+
+        <select class="form-control" id="Depid" name="Depid">
+            <option value="">Please Select option</option>
+            @foreach (var dep in ViewBag.dep)
+            {
+                if (dep.Depid == Model.Depid)
+                {
+                    <option value="@dep.Depid" selected="selected">@dep.Depname</option>
+
+                }
+                else
+                {
+                    <option value="@dep.Depid">@dep.Depname</option>
+                }
+            }
+
+
+        </select>
+
+    </div>
+
+    <br />
+    <button class="btn btn-outline-success">Submit</button>
+    <a class=" btn btn-outline-info" href="\Employee\Index">Cancel</a>
+
+</form>

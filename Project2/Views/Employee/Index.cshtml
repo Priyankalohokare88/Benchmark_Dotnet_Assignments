@@ -1,0 +1,198 @@
+﻿@model List<Project2.Models.employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h2>Employee</h2>
+<a class="btn btn-outline-warning fa fa-building-o" style="background-color: #FFC300;color:black;float:right" href="\Department\Index"> Department</a>
+
+<a class="btn btn-outline-warning fa fa-plus-square" style="background-color: #FFC300;color:black;float:left;" href="\Employee\Create"> Create Employee</a>
+<br />
+<br />
+<table class="table">
+    <tr class="table-secondary">
+
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Empid&IconClass=fa-sort-asc">ID</a>
+                if (ViewBag.SortColumn == "Empid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Depid&IconClass=fa-sort-desc">ID</a>
+                if (ViewBag.SortColumn == "Empid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Empname&IconClass=fa-sort-asc">Name</a>
+                if (ViewBag.SortColumn == "Empname")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Empname&IconClass=fa-sort-desc">Name</a>
+                if (ViewBag.SortColumn == "Empname")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Designation&IconClass=fa-sort-asc">Designation</a>
+                if (ViewBag.SortColumn == "Designation")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Designation&IconClass=fa-sort-desc">Designation</a>
+                if (ViewBag.SortColumn == "Designation")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Mgid&IconClass=fa-sort-asc">ManagerId</a>
+                if (ViewBag.SortColumn == "Mgid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Mgid&IconClass=fa-sort-desc">ManagerId</a>
+                if (ViewBag.SortColumn == "Mgid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Emailid&IconClass=fa-sort-asc">EmailId</a>
+                if (ViewBag.SortColumn == "Emailid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Emailid&IconClass=fa-sort-desc">EmailId</a>
+                if (ViewBag.SortColumn == "Emailid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Hire_date&IconClass=fa-sort-asc">Hire_Date</a>
+                if (ViewBag.SortColumn == "Hire_date")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Hire_date&IconClass=fa-sort-desc">Hire_Date</a>
+                if (ViewBag.SortColumn == "Hire_date")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=sal&IconClass=fa-sort-asc">Salary</a>
+                if (ViewBag.SortColumn == "sal")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=sal&IconClass=fa-sort-desc">Salary</a>
+                if (ViewBag.SortColumn == "sal")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Employee/index?SortColumn=Depid&IconClass=fa-sort-asc">Depatment Name</a>
+                if (ViewBag.SortColumn == "Depid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Employee/index?SortColumn=Depid&IconClass=fa-sort-desc">Department Name</a>
+                if (ViewBag.SortColumn == "Depid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@Html.DisplayFor(temp => item.Empid)</td>
+    <td>@Html.DisplayFor(temp => item.Empname)</td>
+    <td>@Html.DisplayFor(TempData => item.Designation)</td>
+    <td>@Html.DisplayFor(TempData => item.Mgid)</td>
+    <td>@Html.DisplayFor(TempData => item.Emailid)</td>
+    <td>@Html.DisplayFor(TempData => item.Hire_date)</td>
+    <td>@Html.DisplayFor(TempData => item.sal)</td>
+    <td>@Html.DisplayFor(TempData => item.Department.Depname)</td>
+
+
+
+
+
+
+
+
+    @*<td><a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Details\@item.Depid">Details</a></td>*@
+    <td>@Html.ActionLink(" ", "Details", new { id = item.Empid, Controller = "Employee" }, new { @class = "btn btn-outline-warning fa fa-info-circle", @style = "background-color: #FFC300;color:black " })</td>
+    <td>@Html.ActionLink(" ", "Edit", new { id = item.Empid, Controller = "Employee" }, new { @class = "btn btn-outline-warning fa fa-edit", @style = "background-color: #FFC300;color:black " })</td>
+    <td>
+        @Html.ActionLink(" ",
+             "Delete",
+             "Employee",
+             new { id = item.Empid },
+             new { @class = "btn btn-outline-warning fa fa-trash", @style = "background-color: #FFC300;color:black ", onclick = "return confirm('Are sure wants to delete?');" }
+            )
+    </td>
+
+</tr>
+}
+
+</table>

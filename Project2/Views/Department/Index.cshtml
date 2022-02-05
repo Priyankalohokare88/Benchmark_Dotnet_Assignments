@@ -1,0 +1,105 @@
+﻿@model List<Project2.Models.Department>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h2>Departments</h2>
+
+
+<a class="btn btn-outline-warning fa fa-user-circle" style="background-color: #FFC300;color:black;float:right" href="\Employee\Index">  Employee</a>
+
+<a class="btn btn-outline-warning fa fa-plus-square" style="background-color: #FFC300;color:black;float:left;" href="\Department\Create"> Create Department</a>
+<br />
+<br />
+<table class="table">
+    <tr class="table-secondary">
+
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Department/index?SortColumn=Depid&IconClass=fa-sort-asc">ID</a>
+                if (ViewBag.SortColumn == "Depid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Department/index?SortColumn=Depid&IconClass=fa-sort-desc">ID</a>
+                if (ViewBag.SortColumn == "Depid")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Department/index?SortColumn=Depname&IconClass=fa-sort-asc">Name</a>
+                if (ViewBag.SortColumn == "Depname")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Department/index?SortColumn=Depname&IconClass=fa-sort-desc">Name</a>
+                if (ViewBag.SortColumn == "Depname")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th style="width:20%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/Department/index?SortColumn=DepLocation&IconClass=fa-sort-asc">Location</a>
+                if (ViewBag.SortColumn == "DepLocation")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/Department/index?SortColumn=DepLocation&IconClass=fa-sort-desc">Location</a>
+                if (ViewBag.SortColumn == "DepLocation")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+</tr>
+    
+    @foreach (var item in Model)
+    {
+<tr >
+    <td>@Html.DisplayFor(temp => item.Depid)</td>
+    <td>@Html.DisplayFor(temp => item.Depname)</td>
+    <td>@Html.DisplayFor(TempData => item.DepLocation)</td>
+
+
+
+
+
+    @*<td><a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Details\@item.Depid">Details</a></td>*@
+    <td>@Html.ActionLink(" ", "Details", new { id = item.Depid, Controller = "Department" }, new { @class = "btn btn-outline-warning fa fa-info-circle", @style = "background-color: #FFC300;color:black " })</td>
+
+    @*<td><a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Edit\@item.Depid">Edit</a></td>
+        <td> <a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Delete\@item.Depid">Delete</a></td>*@
+    <td>@Html.ActionLink(" ", "Edit", new { id = item.Depid, Controller = "Department" }, new { @class = "btn btn-outline-warning fa fa-edit", @style = "background-color: #FFC300;color:black " })</td>
+    @*<td>@Html.ActionLink(" ", "Delete", new { id = item.Depid, Controller = "Department" }, new { @class = "btn btn-outline-warning fa fa-trash", @style = "background-color: #FFC300;color:black " })</td>*@
+    <td>@Html.ActionLink(" ", // <-- Link text
+                 "Delete", // <-- Action Method Name
+                 "Department", // <-- Controller Name
+                 new { id = item.Depid }, // <-- Route value
+                 new { @class="btn btn-outline-warning fa fa-trash", @style = "background-color: #FFC300;color:black ", onclick = "return confirm('Are sure wants to delete?');" } // <-- htmlArguments
+                )
+    </td>
+
+</tr>
+    }
+    
+    
+</table>

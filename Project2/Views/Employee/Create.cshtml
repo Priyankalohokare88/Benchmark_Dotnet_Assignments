@@ -1,0 +1,64 @@
+﻿@model Project2.Models.employee
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h2>Create</h2>
+
+<form action="/Employee/Create" method="post">
+
+    <div class="form-group">
+        <label>Enter Name</label>
+        <input type="text" class="form-control" id="Empname" name="Empname">
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Enter Designation</label>
+        <input type="text" class="form-control" id="Designation" name="Designation">
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label>Manager Id</label>
+        <input type="text" class="form-control" id="Mgid" name="Mgid">
+    </div>
+
+    <br />
+    <div class="form-group">
+        <label>Email Id</label>
+        <input type="text" class="form-control" id="Emailid" name="Emailid">
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Hire Date</label>
+        <input type="date" class="form-control" id="Hire_Date" name="Hire_Date">
+    </div>
+
+    <br />
+    <div class="form-group">
+        <label>Salary</label>
+        <input type="text" class="form-control" id="sal" name="sal">
+    </div>
+    <br />
+    <div class="form-group">
+        <label>Department Id</label>
+
+        <select class="form-control" id="Depid" name="Depid">
+            <option value="">Please Select option</option>
+            @foreach (var dep in ViewBag.dep)
+            {
+                <option value="@dep.Depid">@dep.Depname</option>
+            }
+
+        </select>
+
+    </div>
+    <br />
+    <button class=" btn btn-outline-success">Submit</button>
+    <a class="btn btn-outline-info" href="\Employee\Index">Cancel</a>
+
+
+</form>
+

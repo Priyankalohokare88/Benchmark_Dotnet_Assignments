@@ -1,0 +1,62 @@
+﻿@model List<Project2.Models.Department>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h3>Search Department</h3>
+<a class="btn btn-outline-warning fa fa-backward" style="background-color: #FFC300;color:black;float:right " href="\Department\Index"> Back</a>
+<br />
+<form class="form-inline">
+
+    <label>Enter Department Name</label>
+    <input type="search" class="form-control" id="d.Depname" name="d.Depname" value="@ViewBag.d" /><br />
+    <label>Enter DepartMent Location</label>
+    <input type="search" class="form-control" id="d.DepLocation" name="d.DepLocation" value="@ViewBag.d" /><br />
+
+    <button type="submit" class="btn-btn-warning">Go</button>
+</form>
+
+
+<table class="table">
+    <tr class="table-secondary">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location</th>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(temp => item.Depid)</td>
+            <td>@Html.DisplayFor(temp => item.Depname)</td>
+            <td>@Html.DisplayFor(TempData => item.DepLocation)</td>
+
+
+
+
+
+            @*<td><a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Details\@item.Depid">Details</a></td>*@
+            <td>@Html.ActionLink(" ", "Details", new { id = item.Depid, Controller = "Department" }, new { @class = "btn btn-outline-warning fa fa-info-circle", @style = "background-color: #FFC300;color:black " })</td>
+
+            @*<td><a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Edit\@item.Depid">Edit</a></td>
+                <td> <a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Delete\@item.Depid">Delete</a></td>*@
+            <td>@Html.ActionLink(" ", "Edit", new { id = item.Depid, Controller = "Department" }, new { @class = "btn btn-outline-warning fa fa-edit", @style = "background-color: #FFC300;color:black " })</td>
+            @*<td>@Html.ActionLink(" ", "Delete", new { id = item.Depid, Controller = "Department" }, new { @class = "btn btn-outline-warning fa fa-trash", @style = "background-color: #FFC300;color:black " })</td>*@
+            <td>
+                @Html.ActionLink(" ", // <-- Link text
+                     "Delete", // <-- Action Method Name
+                     "Department", // <-- Controller Name
+                     new { id = item.Depid }, // <-- Route value
+                     new { @class = "btn btn-outline-warning fa fa-trash", @style = "background-color: #FFC300;color:black ", onclick = "return confirm('Are sure wants to delete?');" } // <-- htmlArguments
+                    )
+            </td>
+
+        </tr>
+    }
+
+    </table>
+
+

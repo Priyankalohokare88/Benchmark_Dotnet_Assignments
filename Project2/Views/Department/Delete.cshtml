@@ -1,0 +1,17 @@
+﻿@model Project2.Models.Department
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/LayoutPage1.cshtml";
+}
+
+<h2>Delete</h2>
+
+<script>
+    function delete1() {
+        alert("Are you sure you want to delete");
+        <a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Delete\@Model.Depid">Delete</a>
+        <a class="btn btn-outline-warning" style="background-color: #FFC300;color:black " href="\Department\Index">Cancel</a>
+
+    }
+</script>
